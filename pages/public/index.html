@@ -11,13 +11,14 @@
 <body>
   <header class="wrap">
     <h1>Discord Alternative Tracker</h1>
-    <p class="lede">Every platform here is compared directly against Discord. Pick a platform and each sheet shows its values next to Discord's.</p>
+    <p class="lede">Every platform here is compared directly against Discord. Pick up to three platforms and each sheet shows their values next to Discord's.</p>
   </header>
 
   <div class="controls">
     <div class="wrap controls-inner">
-      <label for="platform">Compare Discord with</label>
-      <select id="platform"></select>
+      <span class="label">Compare Discord with</span>
+      <span id="picks"></span>
+      <button type="button" id="add-platform">Add another platform</button>
       <label class="check"><input type="checkbox" id="diff-only"> Only rows that differ</label>
       <label for="search" class="find">Find</label>
       <input type="search" id="search" placeholder="attribute or value">

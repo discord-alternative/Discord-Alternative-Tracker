@@ -72,11 +72,32 @@ h1 { font-size: 26px; margin: 0 0 6px; }
   padding: 4px 6px;
 }
 
-.controls select { min-width: 12em; }
+.controls select { min-width: 11em; }
 .controls input[type="search"] { width: 14em; }
 .controls .check { margin-left: 8px; }
 .controls .find { margin-left: 8px; }
 .count { color: var(--muted); font-size: 14px; }
+
+#picks { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.pick { display: inline-flex; align-items: center; gap: 4px; }
+
+.controls button {
+  font: inherit;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.controls button.remove {
+  border: 0;
+  background: none;
+  padding: 2px 4px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: underline;
+}
 
 nav#contents { margin: 20px 0 8px; }
 nav#contents h2 { font-size: 17px; margin: 0 0 6px; }
@@ -126,7 +147,10 @@ thead th { background: var(--head); font-weight: 600; }
 tbody th[scope="row"] { font-weight: 500; width: 28%; }
 tr.section th { background: var(--section); font-weight: 600; }
 table.compare { table-layout: fixed; }
-table.compare td { width: 36%; }
+table.compare[data-platforms="2"] { min-width: 640px; }
+table.compare[data-platforms="2"] tbody th[scope="row"] { width: 22%; }
+table.compare[data-platforms="3"] { min-width: 820px; }
+table.compare[data-platforms="3"] tbody th[scope="row"] { width: 19%; }
 table.records th, table.records td { min-width: 9em; }
 table.records td.wide { min-width: 18em; }
 td.empty { color: var(--muted); font-style: italic; }
@@ -137,7 +161,6 @@ footer { margin: 48px 0 32px; color: var(--muted); font-size: 14px; }
 
 @media (max-width: 640px) {
   nav#contents ul { columns: 1; }
-  tbody th[scope="row"] { width: 34%; }
-  table.compare td { width: 33%; }
+  table.compare[data-platforms="1"] tbody th[scope="row"] { width: 34%; }
   .controls input[type="search"] { width: 100%; }
 }

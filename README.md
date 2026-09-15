@@ -9,7 +9,7 @@ Tracks Discord alternatives. The site is hosted on Cloudflare Pages and the API 
 - `pages/` - the static site deployed to Cloudflare Pages (`wrangler.jsonc`, files in `public/`)
 - `worker/` - the API Worker (`wrangler.jsonc`, source in `src/`)
 
-The site is plain HTML, CSS and JavaScript with no build step and no dependencies. It reads `data.js` and renders every sheet as a three-column table: attribute, Discord, and the platform picked from the dropdown.
+The site is plain HTML, CSS and JavaScript with no build step and no dependencies. It reads `data.js` and renders every sheet as a table with one column for Discord and one for each platform picked from the dropdowns, up to three at a time.
 
 ## Setup
 
