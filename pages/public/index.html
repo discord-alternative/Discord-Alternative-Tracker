@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Discord Alternative Tracker</title>
+  <meta name="description" content="Side-by-side comparison of Discord alternatives against Discord: features, voice and video, architecture, security, pricing and terms.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="wrap">
+    <h1>Discord Alternative Tracker</h1>
+    <p class="lede">Every platform here is compared directly against Discord. Pick a platform and each sheet shows its values next to Discord's.</p>
+  </header>
+
+  <div class="controls">
+    <div class="wrap controls-inner">
+      <label for="platform">Compare Discord with</label>
+      <select id="platform"></select>
+      <label class="check"><input type="checkbox" id="diff-only"> Only rows that differ</label>
+      <label for="search" class="find">Find</label>
+      <input type="search" id="search" placeholder="attribute or value">
+      <span id="count" class="count"></span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <nav id="contents" aria-label="Contents">
+      <h2>Contents</h2>
+      <div id="contents-list"></div>
+    </nav>
+
+    <p class="note">U/K means unknown or not publicly verifiable. N/A means the item does not apply. The Comparison Guide sheet below lists every convention used.</p>
+
+    <main id="sections"></main>
+
+    <footer>
+      <p>Data as of <span id="as-of"></span>. The source workbook and this site's code are on <a href="https://github.com/discord-alternative/Discord-Alternative-Tracker">GitHub</a>, licensed GPL-3.0.</p>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

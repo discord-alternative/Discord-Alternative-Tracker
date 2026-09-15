@@ -1,0 +1,20 @@
+{
+  "name": "discord-alternative-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tracks Discord alternatives. Runs on Cloudflare Workers and Cloudflare Pages.",
+  "license": "GPL-3.0",
+  "scripts": {
+    "data": "python scripts/build_data.py",
+    "login": "wrangler login",
+    "whoami": "wrangler whoami",
+    "worker:dev": "wrangler --cwd worker dev",
+    "worker:deploy": "wrangler --cwd worker deploy",
+    "worker:types": "wrangler --cwd worker types",
+    "pages:dev": "wrangler --cwd pages pages dev",
+    "pages:deploy": "wrangler --cwd pages pages deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}
