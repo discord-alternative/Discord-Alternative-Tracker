@@ -26,7 +26,13 @@ DIRECTORY_SHEET = "Sheet Directory"
 GLOSSARY_SHEET = "Comparison Guide"
 
 # One or more rows per platform, first column is the platform name.
-RECORD_SHEETS = {"Pricing & Tiers", "Monetization Detail", "Research Sources"}
+RECORD_SHEETS = {
+    "Pricing & Tiers",
+    "Monetization Detail",
+    "Research Sources",
+    "Website Links",
+    "Verification Coverage",
+}
 # Exactly one row per platform; shown transposed so it reads like the other sheets.
 TRANSPOSE_SHEETS = {"Terms & Privacy"}
 # Shown in full regardless of the selected platform.
@@ -35,20 +41,24 @@ TABLE_SHEETS = {"Discord Sources", "Subreddit Discovery"}
 NO_TITLE_ROW = {"Subreddit Discovery"}
 
 
-def cell(value):
+def cell(value, number_format="General"):
     if value is None:
         return ""
     if isinstance(value, datetime.datetime):
         return value.date().isoformat()
     if isinstance(value, datetime.date):
         return value.isoformat()
+    if isinstance(value, (int, float)) and number_format.endswith("%"):
+        # Show percentages the way the workbook formats them.
+        decimals = len(number_format.split(".")[1].rstrip("%")) if "." in number_format else 0
+        return f"{value * 100:.{decimals}f}%"
     if isinstance(value, float) and value.is_integer():
         return str(int(value))
     return str(value).strip()
 
 
 def read_rows(ws):
-    return [[cell(c) for c in row] for row in ws.iter_rows(values_only=True)]
+    return [[cell(c.value, c.number_format) for c in row] for row in ws.iter_rows()]
 
 
 def trim(row, width):
@@ -101,7 +111,8 @@ def read_records(name, rows, header_row=1):
     header = rows[header_row]
     width = width_of(header)
     columns = header[:width]
-    body = [trim(r, width) for r in rows[header_row + 1:] if any(r[:width])]
+    # A row with only a label is a group heading; the data columns already say which group a row is in.
+    body = [trim(r, width) for r in rows[header_row + 1:] if any(r[1:width])]
     title = rows[0][0] if header_row == 1 else name
     return {"kind": "records", "title": title, "columns": columns, "rows": body}
 
