@@ -14,3 +14,4 @@ worker-configuration.d.ts
 # OS and editor files
 .DS_Store
 Thumbs.db
+data/~$discord_alternatives_categorized.xlsx
