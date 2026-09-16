@@ -15,6 +15,6 @@
     "pages:deploy": "wrangler --cwd pages pages deploy"
   },
   "devDependencies": {
-    "wrangler": "^4"
+    "wrangler": "^4.132.0"
   }
 }
